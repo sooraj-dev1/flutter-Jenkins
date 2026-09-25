@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        PATH = "/opt/flutter/bin:${env.PATH}"
+        ANDROID_HOME = '/opt/android-sdk'
+        PATH         = "/opt/flutter/bin:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${env.PATH}"
     }
 
     stages {
@@ -45,9 +46,6 @@ pipeline {
         }
         failure {
             echo "Pipeline failed! Please check logs for test or build errors."
-        }
-        always {
-            sh 'flutter clean'
         }
     }
 }
