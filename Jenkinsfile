@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = "/opt/flutter/bin:${env.PATH}"
+    }
+
     stages {
         stage('Flutter Doctor') {
             steps {
